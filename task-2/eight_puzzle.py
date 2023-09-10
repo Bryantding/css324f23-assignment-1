@@ -51,4 +51,15 @@ def h1(s):
 def h3(s):
     # implement this function
     board, _, _ = s
-    return 0
+    goal = (1,2,3,4,5,6,7,8,0)
+    rows_out_of_place = 0
+    cols_out_of_place = 0
+
+    for i in range(9):
+        if board[i] != goal[i]:
+            board_row, board_col = i // 3, i % 3
+            goal_row, goal_col = goal.index(board[i]) // 3, goal.index(board[i]) % 3
+            rows_out_of_place += 1 if board_row != goal_row else 0
+            cols_out_of_place += 1 if board_col != goal_col else 0
+
+    return rows_out_of_place + cols_out_of_place
